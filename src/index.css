@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+@keyframes left-to-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.left-to-right {
+  animation: left-to-right 0.5s ease-out forwards;
+}
+/* Define the keyframes for the pulsing effect */
+@keyframes pulse-border {
+  0%, 100% {
+    border-color:white ;
+  }
+  50% {
+    border-color: #facc15; /* Tailwind yellow-400 color */
+  }
+}
+
+/* Create a class that applies the animation to the border */
+.border-pulse {
+  animation: pulse-border 2s infinite ease-in-out;
+  border-width: 1px;
+  border-style: solid;
+  
+}
+.player-font {
+  font-family: 'Press Start 2P', cursive;
+}
+
+
