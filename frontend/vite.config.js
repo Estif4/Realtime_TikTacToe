@@ -6,5 +6,5 @@ export default defineConfig({
     host: true,
   },
   plugins: [react()],
-  base: '/TicTacToe_Game/', // Ensure this matches your GitHub repo name
+ 
 });
