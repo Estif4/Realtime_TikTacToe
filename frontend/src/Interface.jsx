@@ -79,9 +79,9 @@ function Interface() {
         return;
       }
 
-        let current = "";
-        let turnx;
-        let turno
+      let current = "";
+      let turnx;
+      let turno;
       if (currentPlayer === "X") {
         current = "O";
         turnx = false;
@@ -150,9 +150,7 @@ function Interface() {
                 alt="Tik Tac Toe"
                 className="w-28 h-28 p-4"
               />
-              <div className="font-serif text-2xl  font-bold">
-                Tik-Tac-Toe
-              </div>
+              <div className="font-serif text-2xl  font-bold">Tik-Tac-Toe</div>
             </header>
             <div className="bg-black w-screen sm:w-full p-4 rounded-md relative">
               <div className="flex flex-row justify-around gap-4">
@@ -174,7 +172,13 @@ function Interface() {
                 />
               </div>
 
-              <Board board={board} clickHandler={clickHandler} currentplayer={currentPlayer} Oturn={Oturn} Xturn={Xturn} />
+              <Board
+                board={board}
+                clickHandler={clickHandler}
+                currentplayer={currentPlayer}
+                Oturn={Oturn}
+                Xturn={Xturn}
+              />
               <Overlay
                 gameOver={gameOver}
                 winner={winner}
