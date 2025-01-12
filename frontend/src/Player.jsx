@@ -5,7 +5,7 @@ export default function Player({
   playerName,
   isturn,
   setPlayerName,
-  toggleEdit,
+  setIsEditing,
   symbol,
   socket,
 }) {
@@ -33,13 +33,13 @@ export default function Player({
     if (isEditing) {
       socket.emit("updatePlayerName", { symbol, playerName }); // Emit updated player name
     }
-    toggleEdit((prev) => !prev);
+    setIsEditing((prev) => !prev); // Toggle edit mode
   }
 
   return (
     <div
       className={`w-52 h-12 m-4 ${
-        isEditing ? "border-pulse border-2 border-yellow-300" : ""
+        isturn ? "border-pulse border-2 border-yellow-300" : ""
       } rounded`}>
       <div className="w-full h-full flex items-center">
         {/* Input field for player name */}
