@@ -1,4 +1,4 @@
-export default function Board({ board, clickHandler }) {
+export default function Board({ board, clickHandler,currentplayer,Xturn,Oturn }) {
   return (
     <div className='bg-black flex justify-center items-center w-full h-96'>
       <div className='grid grid-cols-3 gap-4'>
