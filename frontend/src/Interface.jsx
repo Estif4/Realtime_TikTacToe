@@ -19,7 +19,7 @@ function Interface() {
   const [message, setMessage] = useState("");
   const [isEditingX, setIsEditingX] = useState(false); 
   const [isEditingO, setIsEditingO] = useState(false);    
-  const socket = io("http://localhost:5000");
+  const socket = io("https://realtime-tiktactoe.onrender.com");
 
   useEffect(() => {
 

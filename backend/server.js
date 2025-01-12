@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, {
   cors: {
-    origin: " http://localhost:5173",
+    origin: " https://realtime-tiktactoe-2.onrender.com",
     methods: ["GET", "POST"],
   },
 });
