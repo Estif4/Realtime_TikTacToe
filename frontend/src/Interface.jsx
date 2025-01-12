@@ -17,6 +17,7 @@ function Interface() {
   const [position, setPosition] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
   const socket = io("https://realtime-tiktactoe.onrender.com");
 
   useEffect(() => {
@@ -155,7 +156,7 @@ function Interface() {
             <div className="bg-black w-screen sm:w-full p-4 rounded-md relative">
               <div className="flex flex-row justify-around gap-4">
                 <Player
-                  isEditing={false}
+                  isEditing={isEditing}
                   playerName={player1Name}
                   isturn={Xturn}
                   setPlayerName={setPlayer1Name}
@@ -163,7 +164,7 @@ function Interface() {
                   socket={socket}
                 />
                 <Player
-                  isEditing={false}
+                  isEditing={isEditing}
                   playerName={player2Name}
                   isturn={Oturn}
                   setPlayerName={setPlayer2Name}
