@@ -5,7 +5,12 @@ const socketIO = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIO();
+const io = socketIO(server, {
+  cors: {
+    origin: "https://realtime-tiktactoe-2.onrender.com", // React app URL
+    methods: ["GET", "POST"],
+  },
+});
 
 const port = 5000;
 
@@ -16,26 +21,29 @@ app.get("/game", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("A user connected");
 
+  console.log("A user connected");
+  
   socket.on("playerConnected", (data) => {
-    socket.emit("playerConnected", {
-      message: "You have connected to the game!",
-    });
+    socket.emit("playerConnected", { message: "You have connected to the game!" });
   });
   socket.on("newPlayerJoined", (data) => {
-    socket.broadcast.emit("newPlayerJoined", {
-      message: "A new player has joined the game!",
-    });
+    
+    socket.broadcast.emit("newPlayerJoined", { message: "A new player has joined the game!" });
+
   });
+ 
+ 
+  
 
   socket.on("makeMove", (data) => {
+    
     io.emit("moveMade", data);
   });
 
-  socket.on("makeposition", (data) => {
-    io.emit("madeposition", data);
-  });
+socket.on('makeposition',(data)=>{
+  io.emit('madeposition',data)
+})
   socket.on("makegamefinaldisplay", (data) => {
     io.emit("madegamefinaldisplay", data);
   });
