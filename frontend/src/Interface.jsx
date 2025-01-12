@@ -17,7 +17,7 @@ function Interface() {
   const [position, setPosition] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
-  const socket = io("http://localhost:5000");
+  const socket = io("https://realtime-tiktactoe.onrender.com");
 
   useEffect(() => {
     socket.emit("playerConnected");
@@ -41,8 +41,8 @@ function Interface() {
     socket.on("moveMade", (data) => {
       setBoard(data.newBoard);
       setCurrentPlayer(data.current);
-      setXturn(data.turnx);
-      setOturn(data.turno);
+      setXturn(data.Xbackturn);
+      setOturn(data.Obackturn);
     });
 
     socket.on("madegamefinaldisplay", (data) => {
@@ -79,8 +79,20 @@ function Interface() {
         return;
       }
 
-      const nextPlayer = currentPlayer === "X" ? "O" : "X";
-      socket.emit("makeMove", { index, newBoard, current: nextPlayer });
+        let current = "";
+        let turnx;
+        let turno
+      if (currentPlayer === "X") {
+        current = "O";
+        turnx = false;
+        turno = true;
+      } else {
+        current = "X";
+        turnx = true;
+        turno = false;
+      }
+
+      socket.emit("makeMove", { index, newBoard, current, turnx, turno });
     }
   };
 
@@ -162,7 +174,7 @@ function Interface() {
                 />
               </div>
 
-              <Board board={board} clickHandler={clickHandler} />
+              <Board board={board} clickHandler={clickHandler} currentplayer={currentPlayer} Oturn={Oturn} Xturn={Xturn} />
               <Overlay
                 gameOver={gameOver}
                 winner={winner}

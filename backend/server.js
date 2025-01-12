@@ -28,6 +28,7 @@ io.on("connection", (socket) => {
     socket.emit("playerConnected", { message: "You have connected to the game!" });
   });
   socket.on("newPlayerJoined", (data) => {
+    
     socket.broadcast.emit("newPlayerJoined", { message: "A new player has joined the game!" });
 
   });
